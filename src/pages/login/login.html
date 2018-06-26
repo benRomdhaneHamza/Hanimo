@@ -1,0 +1,67 @@
+<ion-content style="background-image: url('assets/imgs/bg.png')">
+  <ion-grid>
+    <ion-row >
+      <ion-col>
+          <ion-img width="100" height="100" src="assets/imgs/logo.png"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+        <ion-col>
+          <div class="title-logo">
+            Hanimo
+          </div>
+        </ion-col>
+      </ion-row>
+    <ion-row>
+      <ion-col>
+          <p> Connectez-vous à votre compte </p>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="loginForm">
+
+        <ion-row>
+        <ion-col>
+            <ion-input formControlName="email" type="email" placeholder="Votre adresse email" [(ngModel)]="email" ></ion-input>
+            
+        </ion-col>
+        </ion-row>
+        <ion-row>
+        <ion-col>
+            <ion-input formControlName="password" type="password" placeholder="Votre mot de passe"  [(ngModel)]="password"  ></ion-input>
+            
+            <div class="reverse" > 
+            <a (click)="alertResestPassword()"  >  Mot de passe oublié? </a></div>
+        </ion-col>
+        </ion-row>
+        <ion-row >
+            <ion-col>
+                <button class="login-button flat" ion-button block (click)="signIn(email,password)" 
+                    [disabled]="!verifChamps(email) || !verifChamps(password)">
+                    SE CONNECTER
+                </button>
+            </ion-col>
+        </ion-row>
+
+    </form>
+    <ion-row>
+        <hr> 
+      <ion-col>
+        <p> Me connecter via... </p>
+
+      </ion-col>
+    </ion-row>
+    <ion-row >
+        <ion-col >
+            <button class="google-button flat" ion-button (click)="googlePlusLogin()" >  <ion-icon name="logo-googleplus"></ion-icon>  GOOGLE+</button>
+        </ion-col>
+        <ion-col>
+            <button class="facebook-button flat" ion-button (click)="facebookLogin()" >   <ion-icon name="logo-facebook"></ion-icon>  FACEBOOK</button>
+        </ion-col>
+    </ion-row>
+    <ion-row >
+        <ion-col>
+            <button class="login-button flat" ion-button block (click)="createAcount()" >CREER UN COMPTE</button>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

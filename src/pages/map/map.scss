@@ -1,0 +1,19 @@
+page-map {
+        @import url('https://fonts.googleapis.com/css?family=Leckerli+One');
+    .title-logo{
+        font-family: 'Leckerli One', cursive;
+        text-align: center;
+        font-size: 4rem;
+        color: #48392a;
+    }
+    .toolbar {
+        .toolbar-background {
+          background: #f2cd5d;
+        }
+    }
+#map {
+        margin: 3%;
+        height: 87%;
+ }
+ 
+}

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle  >
+        <ion-icon name="menu"></ion-icon>
+    </button>
+  <ion-title>
+    Contenu Privé
+  </ion-title>
+</ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-list *ngIf="publications" >
+
+    <ion-card *ngFor="let pub of publications">
+      <!-- Card Header -->
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{pub.userAvatar}}">
+        </ion-avatar>
+        <h2><b>{{pub.userDisplayName}}</b> a partagé un conseil</h2>
+          
+        <ion-icon (click)="deleteFromContenu(pub)" item-end name="ios-close"></ion-icon>
+  
+      </ion-item>
+
+      <ion-card-content>
+        {{pub.content}}
+      </ion-card-content>
+
+    </ion-card>
+  </ion-list>
+</ion-content>

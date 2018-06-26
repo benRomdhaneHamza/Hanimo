@@ -1,0 +1,149 @@
+<!-- <ion-header>
+      <button ion-button icon-only menuToggle  >
+          <ion-icon name="menu"></ion-icon>
+      </button>
+</ion-header> -->
+
+<ion-header>
+    <ion-toolbar>
+            <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                  </button>
+            <ion-buttons end>
+              <button ion-button icon-only  (click)="settings()">
+                <ion-icon name="ios-settings-outline"></ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-toolbar> 
+  
+</ion-header>
+
+
+<ion-content >
+    <!-- <img (click)="changePicture()" id="profile-image" src="{{currentUser.imageUrl}}">
+    <button ion-button (click)="settings()">Parametere</button> -->
+
+    <ion-card >
+    <ion-list >
+        <ion-item class="withAvatar" ><img  src="{{currentUser.imageUrl}}"></ion-item>
+            <ion-item class="transparant">
+                <ion-avatar item-start>
+                    <img id="profile-image" src="{{currentUser.imageUrl}}">
+                </ion-avatar>
+                <ion-fab>
+                    <button ion-fab mini (click)="changePicture()">  <ion-icon name="md-camera"></ion-icon></button>
+                </ion-fab>
+            </ion-item>
+            <ion-item class="parttransparant">
+                <h2><b>{{currentUser.displayName}}</b></h2>     
+                <h5><ion-badge item-end> <ion-icon name="md-star" color="light"></ion-icon>{{currentUser.reputation}}</ion-badge></h5>
+            </ion-item>
+    </ion-list>
+</ion-card>
+
+    <ion-list *ngIf="publications" >
+        <ion-card *ngFor="let pub of publications" >
+
+            <!-- <ion-item>
+                <ion-avatar item-start>
+                  <img src="{{currentUser.imageUrl}}">
+                </ion-avatar>
+
+                <ion-card-header *ngIf="pub.order == 'sharingannonce' || pub.order == 'sharingpublication'; else templateName" >
+                    <p>{{currentUser.displayName}} a partagé une {{pub.type}} de {{pub.userDipslayName}}</p>
+                </ion-card-header>
+
+                <p>{{pub.time}}</p>
+
+                <ion-icon (click)="showMore(pub)" item-end name="ios-more"></ion-icon>
+            </ion-item> -->
+
+            <ion-item>
+                <ion-avatar item-start class="edit" ><img src="{{currentUser.imageUrl}}"></ion-avatar>
+                <h3><b>{{currentUser.displayName}}</b></h3>
+                <p>{{pub.time}} </p>
+
+                <ion-badge *ngIf="pub.typeAnnonce == 3" id="a3"item-end>Besoin d'aide</ion-badge>
+                <ion-badge *ngIf="pub.typeAnnonce == 2" id="a2"item-end>Besoin de foyer</ion-badge>
+                <ion-badge *ngIf="pub.typeAnnonce == 1" id="a1"item-end>Maladie</ion-badge>
+                <ion-badge *ngIf="pub.typeAnnonce == 0" id="a0"item-end>Danger</ion-badge>
+
+                <ion-badge *ngIf="pub.order == 'publication'" item-end>Publication</ion-badge>
+                 <ion-badge *ngIf="pub.order == 'conseil'" item-end>Conseil</ion-badge>
+
+                 <ion-icon *ngIf="pub.order == 'annonce'" (click)="showMore(pub)" item-end name="ios-more"></ion-icon>
+
+            </ion-item>
+
+            <!-- <ng-template #templateName>
+                {{currentUser.displayName}} a partagé une {{pub.order}}
+            </ng-template> -->
+
+            <!-- <ion-row *ngIf="(pub.order == 'publication' || pub.order == 'annonce' || pub.order == 'sharingannonce' || pub.order == 'sharingpublication') && pub.nbimage > 0" >
+                <ion-slides zoom="true" pager>
+                    <ion-slide *ngFor="let img of pub.imagesUrl">
+                        <img style="width: 359px; height: 300px;" src="{{img}}">
+                    </ion-slide>
+                </ion-slides>
+            </ion-row> -->
+
+            <ion-row *ngIf="(pub.order == 'publication' || pub.order == 'annonce' || pub.order == 'sharingannonce' || pub.order == 'sharingpublication') && pub.nbimage > 0">
+
+            <ion-slides zoom="true" pager>
+                
+                <ion-slide *ngFor="let img of pub.imagesUrl">
+                    <button *ngIf="pub.order == 'annonce' || pub.order == 'sharingannonce'" outline>
+                        <ion-fab right bottom class="marker"><img src="assets/imgs/marker.png"></ion-fab> 
+                    </button>
+                    <img style="width: 100%; height: 70%;max-width: 359px; max-height: 300px" src="{{img}}">
+                </ion-slide>
+                
+            </ion-slides>
+            
+            </ion-row>
+
+            <ion-card-content>
+                <p *ngIf="pub.order == 'annonce' || pub.order == 'sharingannonce'" >{{pub.descAnnonce}}</p>
+                <p *ngIf="pub.order == 'publication' || pub.order == 'sharingpublication'" >{{pub.content}}</p>
+                <p *ngIf="pub.order == 'conseil'" >{{pub.conseilContent}}</p>
+            </ion-card-content>
+
+
+            <ion-card-content>
+            <ion-row>
+                <!-- *ngIf="!isLiked(pub)"  -->
+                <ion-col *ngIf="!pub.liked" >
+                    <button (click)="likePub(pub)" ion-button icon-left clear small>
+                    <ion-icon name="ios-heart-outline"></ion-icon>
+                    <div>J'aime</div>
+                    </button>
+                </ion-col>
+            
+                <!--   *ngIf="isLiked(pub)"  -->
+                <ion-col *ngIf="pub.liked" >
+                    <button (click)="dislikePub(pub)" ion-button icon-left clear small>
+                    <ion-icon name="ios-heart"></ion-icon>
+                    <div>J'aime pas</div>
+                    </button>
+                </ion-col>
+            
+                <ion-col>
+                    <button (click)="openCommentsModal(pub)" ion-button icon-left clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>Commentaires</div>
+                    </button>
+                </ion-col>
+            
+            </ion-row>
+            
+                <ion-item>
+                    <ion-input placeholder="ajouter un commentaire" [(ngModel)]="pub.myComment" item-start> </ion-input>
+                    <button ion-button (click)="commenter(pub)" item-end [disabled]="!verifChamps(pub.myComment)">
+                        commenter
+                    </button>
+                </ion-item>
+
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,112 @@
+<ion-header>
+    <ion-navbar color="sandy-brown">
+      <ion-title>Animal cherche foyer</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content>
+
+    <ion-card>
+
+      <ion-card-header>
+        <div class="category cat-work">Besoin de foyer</div>
+      </ion-card-header>
+      <b></b>
+
+      <ion-card-content>
+
+      <!-- <ion-grid>
+          <ion-row>
+            <ion-item>
+              <ion-label floating >Titre de l'annonce</ion-label>
+              <ion-input [(ngModel)]="annonce.titleAnnonce" type="text"> </ion-input>
+            </ion-item> 
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-lg-2>
+              <ion-item >
+                  <ion-label floating >Votre description</ion-label>
+                  <ion-textarea [(ngModel)]="annonce.descAnnonce" type="text" rows="4" cols="50"> </ion-textarea>
+                </ion-item>
+              </ion-col>
+              <ion-col col-3>
+                <button ion-button clear class="button-md-marker">
+                  <ion-icon name="md-locate" color="sos" class="ion-md-locate-marker"></ion-icon>
+                  <br><br>
+                </button>
+                {{locationString}}
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-item>
+              <button ion-button  (click)="capture(1)" color="sandy-brown">
+                <ion-icon name="ios-camera"> Camera !</ion-icon>
+              </button>
+              <button ion-button (click)="capture(0)" color="sandy-brown">
+                <ion-icon name="ios-image">Gallerie !</ion-icon>
+              </button>
+
+              <ion-row *ngIf="captureDataUrl">
+                  <ion-slides zoom="true" pager>
+                    <ion-slide *ngFor="let img of captureDataUrl">
+                      <img src="{{img}}">
+                    </ion-slide>
+                  </ion-slides>
+              </ion-row>
+            </ion-item>
+          </ion-row>
+
+          <ion-row>
+            <ion-item>
+              <button (click)="publierAnnonce(annonce)" ion-button  color="sos" 
+              [disabled]="!verifChamps(annonce.descAnnonce) || !verifChamps(annonce.titleAnnonce) ">
+                Publier
+              </button>
+            </ion-item>
+          </ion-row>
+          
+        </ion-grid> -->
+
+        <ion-item>
+            <ion-input [(ngModel)]="annonce.titleAnnonce" type="text" placeholder="Titre de l'annonce"> </ion-input>
+          </ion-item> 
+          <br>
+            <ion-item >
+                <ion-textarea [(ngModel)]="annonce.descAnnonce" type="text"  placeholder="Votre description"> </ion-textarea>
+              </ion-item>
+
+          <ion-item>
+
+              <ion-row *ngIf="captureDataUrl">
+                  <ion-slides zoom="true" pager>
+                    <ion-slide *ngFor="let img of captureDataUrl">
+                      <img src="{{img}}">
+                    </ion-slide>
+                  </ion-slides>
+              </ion-row>
+
+              <ion-item>
+              <button  ion-button  (click)="capture(1)" color="sandy-brown" item-start>
+                  <ion-icon name="ios-camera"> Camera !</ion-icon>
+                </button>
+                <button  ion-button (click)="capture(0)" color="sandy-brown" item-end>
+                  <ion-icon name="ios-image">Gallerie !</ion-icon>
+                </button>
+              </ion-item>          
+
+          </ion-item>
+
+          <ion-item>
+              <button block (click)="publierAnnonce(annonce)" ion-button 
+              [disabled]="!verifChamps(annonce.descAnnonce) || !verifChamps(annonce.titleAnnonce) ">
+                Publier
+              </button>
+            </ion-item>
+
+      </ion-card-content>
+
+    </ion-card>
+
+  </ion-content>

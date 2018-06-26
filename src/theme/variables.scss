@@ -1,0 +1,154 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  facebook :  #4267b2,
+  google : rgb(200, 68, 57),
+  maron : #4f331b,
+  orange- : #F6AA24,
+  orange-white: #fffaca,
+  gris: #685D49,
+  gris-foncee : #53524A,
+  aide: #ffd700,
+  foyer: #ff7f50,
+  blessure: #008000,
+  sos: #cc0000,
+  autre: #808080,
+  sandy-brown : #F5BA52,
+pale-goldenrod: #F4EBC9,
+dim-gray: #5E584B,
+custm-white: #FBFBFB,
+burly-wood: #E4CE9E,
+);
+
+
+.toolbar {
+  .toolbar-background {
+    background: #f2cd5d;
+  }
+} //Hanimo
+@import url('https://fonts.googleapis.com/css?family=Leckerli+One');
+.title-logo{
+    font-family: 'Leckerli One', cursive;
+    text-align: center;
+    font-size: 4rem;
+    color: #48392a;
+}
+
+.center{
+  display: block;
+  margin-left: 65px;
+  margin-right: auto;
+  width: 60%;
+}
+
+.connecter{
+  text-align: center;
+}
+
+.item-md ion-avatar ion-img, .item-md ion-avatar img {
+border-radius: inherit;
+// overflow: hidden;
+width: 50%;
+height: 20%;
+// padding-left: 2.7rem;
+}
+
+    
+.login-button {
+border-width: 2px;
+// border-style: bold;
+border-color: #f1942a;
+color: #f1942a;
+// background-color: transparent;
+}
+
+      //color border input with orange solide with 1 px 
+ion-input{
+border-bottom: #F6AA24 solid 1px;
+
+}
+
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

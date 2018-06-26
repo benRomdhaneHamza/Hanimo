@@ -1,0 +1,30 @@
+<ion-menu [content]="content" >
+
+  
+    <ion-content class="background">
+      <ion-list>
+          
+          <ion-list (click)="goToProfile()" class="profile" no-lines>
+                  <ion-item >
+                    <ion-avatar item-start>
+                      <img id="profile-image" src="{{currentUser.imageUrl}}">
+                    </ion-avatar><br>
+                    
+                  </ion-item>
+                  <ion-item>
+                      <h2 id="userName"> {{currentUser.displayName}}</h2>
+                  </ion-item>
+            </ion-list>
+        <button menuClose ion-item class="title-logo" *ngFor="let p of pages" (click)="openPage(p)">
+          
+          {{p.title}}
+        </button>
+        <button menuClose ion-item class="title-logo" (click)="Deconnexion()">          
+          Deconnexion
+        </button>
+      </ion-list>
+    </ion-content>
+  
+  </ion-menu>
+
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

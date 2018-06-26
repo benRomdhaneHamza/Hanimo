@@ -1,0 +1,20 @@
+<ion-content padding>
+
+  <button ion-button block (click)="dismissModal()" >Fermer</button>
+  <ion-list *ngIf="comments" >
+
+    <ion-item *ngFor="let comment of comments" >
+
+      <ion-avatar item-start (click)="goToUserprofile(comment.userId)">
+        <img src="{{comment.avaterUrl}}">
+      </ion-avatar>
+
+      <h2 (click)="goToUserprofile(comment.userId)"><b>{{comment.displayName}}</b></h2>
+
+      <h3>{{comment.commentContent}}</h3>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
